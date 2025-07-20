@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrés Miniers - KAZHAYES MINING SARL</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .mining-page {
+            padding-top: 100px;
+            min-height: 100vh;
+            background: var(--bg-light);
+        }
+        
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #2c2c2c 100%);
+            color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="mining" patternUnits="userSpaceOnUse" width="20" height="20"><circle cx="10" cy="10" r="1" fill="%23FF6B35" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23mining)"/></svg>');
+        }
+        
+        .page-header .container {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .page-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .page-subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .mining-sites-section {
+            padding: 80px 0;
+        }
+        
+        .sites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .site-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            border-top: 5px solid transparent;
+        }
+        
+        .site-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .site-card.active {
+            border-top-color: #28a745;
+        }
+        
+        .site-card.development {
+            border-top-color: var(--accent-color);
+        }
+        
+        .site-card.planning {
+            border-top-color: #6c757d;
+        }
+        
+        .site-image-container {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .site-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        
+        .site-card:hover .site-image {
+            transform: scale(1.1);
+        }
+        
+        .site-status-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            backdrop-filter: blur(10px);
+        }
+        
+        .site-status-badge.active {
+            background: rgba(40, 167, 69, 0.9);
+            color: white;
+        }
+        
+        .site-status-badge.development {
+            background: rgba(255, 107, 53, 0.9);
+            color: white;
+        }
+        
+        .site-status-badge.planning {
+            background: rgba(108, 117, 125, 0.9);
+            color: white;
+        }
+        
+        .site-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            padding: 30px 20px 20px;
+        }
+        
+        .site-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .site-location {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .site-content {
+            padding: 30px;
+        }
+        
+        .minerals-section {
+            margin-bottom: 25px;
+        }
+        
+        .minerals-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .minerals-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .mineral-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: white;
+            transition: transform 0.3s ease;
+        }
+        
+        .mineral-badge:hover {
+            transform: scale(1.05);
+        }
+        
+        .mineral-badge.copper {
+            background: linear-gradient(135deg, #B87333, #CD853F);
+        }
+        
+        .mineral-badge.cobalt {
+            background: linear-gradient(135deg, #4169E1, #6495ED);
+        }
+        
+        .mineral-badge.gold {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+        }
+        
+        .mineral-badge.coltan {
+            background: linear-gradient(135deg, #2F4F4F, #708090);
+        }
+        
+        .mineral-badge.lithium {
+            background: linear-gradient(135deg, #C0C0C0, #E5E5E5);
+            color: var(--primary-color);
+        }
+        
+        .mineral-badge.graphite {
+            background: linear-gradient(135deg, #36454F, #2F4F4F);
+        }
+        
+        .site-details {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .detail-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .detail-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 5px;
+        }
+        
+        .detail-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .back-button {
+            position: fixed;
+            top: 100px;
+            left: 20px;
+            background: var(--accent-color);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            z-index: 100;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+        
+        .back-button:hover {
+            background: #e55a2b;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+        }
+        
+        @media (max-width: 768px) {
+            .sites-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .page-title {
+                font-size: 2.5rem;
+            }
+            
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .back-button {
+                position: static;
+                margin: 20px;
+                display: inline-block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <div class="logo">
+                    <img src="public/lo.jpg" alt="logo" class="logo-k">
+                </div>
+                <div class="brand-text">
+                    <span class="kazhayes">KAZHAYES</span>
+                    <span class="mining">MINING</span>
+                    <span class="sarl">SARL</span>
+                </div>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Accueil</a>
+                <a href="index.html#apropos" class="nav-link">À propos</a>
+                <a href="index.html#activites" class="nav-link">Activités</a>
+                <a href="carres-miniers.html" class="nav-link active">Carrés Miniers</a>
+                <a href="index.html#minerais" class="nav-link">Minerais</a>
+                <a href="index.html#projets" class="nav-link">Projets</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+                <div class="language-selector">
+                    <button class="lang-btn active" data-lang="fr">FR</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                </div>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Bouton Retour -->
+    <a href="index.html" class="back-button">← Retour à l'accueil</a>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">CARRÉS MINIERS</h1>
+            <p class="page-subtitle">
+                Découvrez nos zones d'exploitation minière à travers la République Démocratique du Congo, 
+                avec des concessions stratégiquement positionnées dans les régions les plus riches en minerais.
+            </p>
+        </div>
+    </section>
+
+    <!-- Sites Miniers -->
+    <section class="mining-sites-section">
+        <div class="container">
+            <div class="sites-grid">
+                <!-- Haut-Katanga -->
+                <div class="site-card active">
+                    <div class="site-image-container">
+                        <img src="https://images.pexels.com/photos/162568/mining-excavator-coal-mining-wheel-162568.jpeg" alt="Site minier Haut-Katanga" class="site-image">
+                        <div class="site-status-badge active">Actif</div>
+                        <div class="site-overlay">
+                            <h3 class="site-name">Haut-Katanga</h3>
+                            <p class="site-location">Province du Haut-Katanga, RDC</p>
+                        </div>
+                    </div>
+                    <div class="site-content">
+                        <div class="minerals-section">
+                            <h4 class="minerals-title">Minerais Exploités</h4>
+                            <div class="minerals-grid">
+                                <div class="mineral-badge copper">
+                                    <span>🔶</span>
+                                    <span>Cuivre</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="site-details">
+                            <div class="details-grid">
+                                <div class="detail-item">
+                                    <span class="detail-label">Production</span>
+                                    <span class="detail-value">45,000 tonnes/an</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Employés</span>
+                                    <span class="detail-value">320</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Superficie</span>
+                                    <span class="detail-value">2,500 km²</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Année de début</span>
+                                    <span class="detail-value">2008</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lualaba -->
+                <div class="site-card active">
+                    <div class="site-image-container">
+                        <img src="https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg" alt="Site minier Lualaba" class="site-image">
+                        <div class="site-status-badge active">Actif</div>
+                        <div class="site-overlay">
+                            <h3 class="site-name">Lualaba</h3>
+                            <p class="site-location">Province du Lualaba, RDC</p>
+                        </div>
+                    </div>
+                    <div class="site-content">
+                        <div class="minerals-section">
+                            <h4 class="minerals-title">Minerais Exploités</h4>
+                            <div class="minerals-grid">
+                                <div class="mineral-badge copper">
+                                    <span>🔶</span>
+                                    <span>Cuivre</span>
+                                </div>
+                                <div class="mineral-badge cobalt">
+                                    <span>🔷</span>
+                                    <span>Cobalt</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="site-details">
+                            <div class="details-grid">
+                                <div class="detail-item">
+                                    <span class="detail-label">Production</span>
+                                    <span class="detail-value">38,000 tonnes/an</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Employés</span>
+                                    <span class="detail-value">280</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Superficie</span>
+                                    <span class="detail-value">1,800 km²</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Année de début</span>
+                                    <span class="detail-value">2010</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ituri -->
+                <div class="site-card active">
+                    <div class="site-image-container">
+                        <img src="https://images.pexels.com/photos/1108101/pexels-photo-1108101.jpeg" alt="Site minier Ituri" class="site-image">
+                        <div class="site-status-badge active">Actif</div>
+                        <div class="site-overlay">
+                            <h3 class="site-name">Ituri</h3>
+                            <p class="site-location">Province de l'Ituri, RDC</p>
+                        </div>
+                    </div>
+                    <div class="site-content">
+                        <div class="minerals-section">
+                            <h4 class="minerals-title">Minerais Exploités</h4>
+                            <div class="minerals-grid">
+                                <div class="mineral-badge gold">
+                                    <span>🟡</span>
+                                    <span>Or</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="site-details">
+                            <div class="details-grid">
+                                <div class="detail-item">
+                                    <span class="detail-label">Production</span>
+                                    <span class="detail-value">12 kg/an</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Employés</span>
+                                    <span class="detail-value">150</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Superficie</span>
+                                    <span class="detail-value">900 km²</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Année de début</span>
+                                    <span class="detail-value">2012</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Maniema -->
+                <div class="site-card development">
+                    <div class="site-image-container">
+                        <img src="https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg" alt="Site minier Maniema" class="site-image">
+                        <div class="site-status-badge development">En développement</div>
+                        <div class="site-overlay">
+                            <h3 class="site-name">Maniema</h3>
+                            <p class="site-location">Province du Maniema, RDC</p>
+                        </div>
+                    </div>
+                    <div class="site-content">
+                        <div class="minerals-section">
+                            <h4 class="minerals-title">Minerais Prévus</h4>
+                            <div class="minerals-grid">
+                                <div class="mineral-badge gold">
+                                    <span>🟡</span>
+                                    <span>Or</span>
+                                </div>
+                                <div class="mineral-badge coltan">
+                                    <span>⬛</span>
+                                    <span>Coltan</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="site-details">
+                            <div class="details-grid">
+                                <div class="detail-item">
+                                    <span class="detail-label">Production prévue</span>
+                                    <span class="detail-value">8 kg Or + 15,000 t Coltan/an</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Emplois prévus</span>
+                                    <span class="detail-value">200</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Superficie</span>
+                                    <span class="detail-value">1,200 km²</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Lancement prévu</span>
+                                    <span class="detail-value">2025</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nord-Kivu -->
+                <div class="site-card development">
+                    <div class="site-image-container">
+                        <img src="https://images.pexels.com/photos/162568/mining-excavator-coal-mining-wheel-162568.jpeg" alt="Site minier Nord-Kivu" class="site-image">
+                        <div class="site-status-badge development">En développement</div>
+                        <div class="site-overlay">
+                            <h3 class="site-name">Nord-Kivu</h3>
+                            <p class="site-location">Province du Nord-Kivu, RDC</p>
+                        </div>
+                    </div>
+                    <div class="site-content">
+                        <div class="minerals-section">
+                            <h4 class="minerals-title">Minerais Prévus</h4>
+                            <div class="minerals-grid">
+                                <div class="mineral-badge coltan">
+                                    <span>⬛</span>
+                                    <span>Coltan</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="site-details">
+                            <div class="details-grid">
+                                <div class="detail-item">
+                                    <span class="detail-label">Production prévue</span>
+                                    <span class="detail-value">20,000 tonnes/an</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Emplois prévus</span>
+                                    <span class="detail-value">180</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Superficie</span>
+                                    <span class="detail-value">1,500 km²</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Lancement prévu</span>
+                                    <span class="detail-value">2026</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nouvelles Concessions -->
+                <div class="site-card planning">
+                    <div class="site-image-container">
+                        <img src="https://images.pexels.com/photos/1108101/pexels-photo-1108101.jpeg" alt="Nouvelles concessions" class="site-image">
+                        <div class="site-status-badge planning">En planification</div>
+                        <div class="site-overlay">
+                            <h3 class="site-name">Nouvelles Concessions</h3>
+                            <p class="site-location">Diverses provinces, RDC</p>
+                        </div>
+                    </div>
+                    <div class="site-content">
+                        <div class="minerals-section">
+                            <h4 class="minerals-title">Minerais Ciblés</h4>
+                            <div class="minerals-grid">
+                                <div class="mineral-badge lithium">
+                                    <span>⚪</span>
+                                    <span>Lithium</span>
+                                </div>
+                                <div class="mineral-badge graphite">
+                                    <span>⚫</span>
+                                    <span>Graphite</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="site-details">
+                            <div class="details-grid">
+                                <div class="detail-item">
+                                    <span class="detail-label">Investissement</span>
+                                    <span class="detail-value">25M$ USD</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Emplois prévus</span>
+                                    <span class="detail-value">300+</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Phase d'étude</span>
+                                    <span class="detail-value">Exploration</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Horizon</span>
+                                    <span class="detail-value">2027-2030</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <img src="public/lo.jpg" alt="logo" class="logo-k">
+                    </div>
+                    <div class="brand-text">
+                        <span class="kazhayes">KAZHAYES</span>
+                        <span class="mining">MINING</span>
+                        <span class="sarl">SARL</span>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">Accueil</a>
+                    <a href="index.html#apropos">À propos</a>
+                    <a href="index.html#activites">Activités</a>
+                    <a href="carres-miniers.html">Carrés Miniers</a>
+                    <a href="index.html#minerais">Minerais</a>
+                    <a href="index.html#projets">Projets</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 KAZHAYES MINING SARL. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

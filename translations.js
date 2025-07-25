@@ -25,7 +25,7 @@ const translations = {
             title: "À PROPOS DE NOUS",
             history: {
                 title: "L'historique",
-                description: "KAZHAYES MINING SARL a été fondée en 2005. Elle constitue une part significative de l'économie nationale en République Démocratique du Congo."
+                description: "KAZHAYES MINING SARL a été fondée en 2015. Elle constitue une part significative de l'économie nationale en République Démocratique du Congo."
             },
             mission: {
                 title: "La mission",

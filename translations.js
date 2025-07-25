@@ -197,7 +197,7 @@ const translations = {
         hero: {
             title: "KAZHAYES MINING SARL",
             subtitle: "Natural mining in the Democratic Republic of Congo",
-            description: "A leader mining company in DRC, it operates worldwide in prospecting and mining operations. It extracts minerals, rare earths, and metals including copper, iron, cobalt, gold and diamond.",
+            description: "A leadeing mining company in DRC, it operates worldwide in prospecting and mining operations. It extracts minerals, rare earths, and metals including copper, iron, cobalt, gold and diamond.",
             discover: "Discover",
             contactUs: "Contact Us"
         },

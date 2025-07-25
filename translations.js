@@ -15,8 +15,8 @@ const translations = {
         // Hero Section
         hero: {
             title: "KAZHAYES MINING SARL",
-            subtitle: "Les mines au naturel en République Démocratique du Congo",
-            description: "Une société minière leader en RDC, spécialisée dans la prospection et l'exploitation de mines de cuivre, cobalt, or et diamant depuis 2005.",
+            subtitle: "Les mines en République Démocratique du Congo",
+            description: "Une société minière leader en République Démocratique du Congo, qui regroupe les activités de prospections et d’exploitations de mines dans le monde entier. Elle concerne l’extraction des minéraux, de terres rares et des métaux dont le cuivre, le fer, l’or et le diamant.",
             discover: "Découvrir",
             contactUs: "Nous contacter"
         },
@@ -197,7 +197,7 @@ const translations = {
         hero: {
             title: "KAZHAYES MINING SARL",
             subtitle: "Natural mining in the Democratic Republic of Congo",
-            description: "A leading mining company in DRC, specialized in prospecting and mining copper, cobalt, gold and diamond since 2005.",
+            description: "A leader mining company in DRC, it operates worldwide in prospecting and mining operations. It extracts minerals, rare earths, and metals including copper, iron, cobalt, gold and diamond.",
             discover: "Discover",
             contactUs: "Contact Us"
         },
@@ -206,11 +206,11 @@ const translations = {
             title: "ABOUT US",
             history: {
                 title: "History",
-                description: "KAZHAYES MINING SARL was founded in 2005. It constitutes a significant part of the national economy in the Democratic Republic of Congo."
+                description: "KAZHAYES MINING SARL was founded in 2015. It constitutes a significant part of the national economy in the DRC."
             },
             mission: {
                 title: "Mission",
-                description: "It consists of extracting precious geological materials and minerals buried deep beneath the Earth's surface."
+                description: "It consists of extracting precious geological materials and minerals buried deep beneath the Earth's surface.The objectives are to promote the systematic development of various mines with a view to harnessing the nation’s mineral wealth."
             },
             values: {
                 title: "Values",
@@ -226,7 +226,7 @@ const translations = {
             },
             exploitation: {
                 title: "Exploitation",
-                description: "Extract minerals from rocks in the Earth's crust containing minerals or metals useful in sufficiently interesting proportions."
+                description: "Extract minerals from rocks in the Earth's crust containing minerals or metals useful in sufficiently interesting proportions to justify their exploitation"
             },
             transformation: {
                 title: "Transformation",

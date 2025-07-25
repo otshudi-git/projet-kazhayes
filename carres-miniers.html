@@ -305,19 +305,20 @@
                 </div>
             </div>
             <div class="nav-menu" id="navMenu">
-                <a href="index.html" class="nav-link">Accueil</a>
-                <a href="index.html#apropos" class="nav-link">À propos</a>
-                <a href="index.html#activites" class="nav-link">Activités</a>
-                <a href="carres-miniers.html" class="nav-link active">Carrés Miniers</a>
-                <a href="index.html#minerais" class="nav-link">Minerais</a>
-                <a href="index.html#projets" class="nav-link">Projets</a>
-                <a href="index.html#contact" class="nav-link">Contact</a>
+                <a href="index.html" class="nav-link" data-translate="nav.home">Accueil</a>
+                <a href="index.html#apropos" class="nav-link" data-translate="nav.about">À propos</a>
+                <a href="index.html#activites" class="nav-link" data-translate="nav.activities">Activités</a>
+                <a href="carres-miniers.html" class="nav-link active" data-translate="nav.miningSquares">Carrés Miniers</a>
+                <a href="index.html#projets" class="nav-link" data-translate="nav.projects">Projets</a>
+                <a href="index.html#durabilite" class="nav-link" data-translate="nav.sustainability">Développement Durable</a>
+                <a href="index.html#partenariats" class="nav-link" data-translate="nav.partnerships">Partenariats</a>
+                <a href="index.html#contact" class="nav-link" data-translate="nav.contact">Contact</a>
                 <div class="language-selector">
                     <button class="lang-btn active" data-lang="fr">FR</button>
                     <button class="lang-btn" data-lang="en">EN</button>
                 </div>
             </div>
-            <div class="nav-toggle" id="navToggle">
+                        <div class="nav-toggle" id="navToggle">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -326,15 +327,14 @@
     </header>
 
     <!-- Bouton Retour -->
-    <a href="index.html" class="back-button">← Retour à l'accueil</a>
+    <a href="index.html" class="back-button" data-translate="miningSquares.backButton">← Retour à l'accueil</a>
 
     <!-- Page Header -->
     <section class="page-header">
         <div class="container">
-            <h1 class="page-title">CARRÉS MINIERS</h1>
-            <p class="page-subtitle">
-                Découvrez nos zones d'exploitation minière à travers la République Démocratique du Congo, 
-                avec des concessions stratégiquement positionnées dans les régions les plus riches en minerais.
+            <h1 class="page-title" data-translate="miningSquares.title">CARRÉS MINIERS</h1>
+            <p class="page-subtitle" data-translate="miningSquares.subtitle">
+                Découvrez nos zones d'exploitation minière à travers la République Démocratique du Congo, avec des concessions stratégiquement positionnées dans les régions les plus riches en minerais.
             </p>
         </div>
     </section>
@@ -347,38 +347,38 @@
                 <div class="site-card active">
                     <div class="site-image-container">
                         <img src="public/femme.jpg" alt="Site minier Haut-Katanga" class="site-image">
-                        <div class="site-status-badge active">Actif</div>
+                        <div class="site-status-badge active" data-translate="miningSquares.status.active">Actif</div>
                         <div class="site-overlay">
-                            <h3 class="site-name">Haut-Katanga</h3>
-                            <p class="site-location">Province du Haut-Katanga, RDC</p>
+                            <h3 class="site-name" data-translate="miningSquares.sites.hautKatanga.name">Haut-Katanga</h3>
+                            <p class="site-location" data-translate="miningSquares.sites.hautKatanga.location">Province du Haut-Katanga, RDC</p>
                         </div>
                     </div>
                     <div class="site-content">
                         <div class="minerals-section">
-                            <h4 class="minerals-title">Minerais Exploités</h4>
+                            <h4 class="minerals-title" data-translate="miningSquares.sites.hautKatanga.minerals">Minerais Exploités</h4>
                             <div class="minerals-grid">
                                 <div class="mineral-badge copper">
                                     <span>🔶</span>
-                                    <span>Cuivre</span>
+                                    <span data-translate="miningSquares.minerals.copper">Cuivre</span>
                                 </div>
                             </div>
                         </div>
                         <div class="site-details">
                             <div class="details-grid">
                                 <div class="detail-item">
-                                    <span class="detail-label">Production</span>
+                                    <span class="detail-label" data-translate="miningSquares.details.production">Production</span>
                                     <span class="detail-value">45,000 tonnes/an</span>
                                 </div>
                                 <div class="detail-item">
-                                    <span class="detail-label">Employés</span>
+                                    <span class="detail-label" data-translate="miningSquares.details.employees">Employés</span>
                                     <span class="detail-value">320</span>
                                 </div>
                                 <div class="detail-item">
-                                    <span class="detail-label">Superficie</span>
+                                    <span class="detail-label" data-translate="miningSquares.details.area">Superficie</span>
                                     <span class="detail-value">2,500 km²</span>
                                 </div>
                                 <div class="detail-item">
-                                    <span class="detail-label">Année de début</span>
+                                    <span class="detail-label" data-translate="miningSquares.details.startYear">Année de début</span>
                                     <span class="detail-value">2008</span>
                                 </div>
                             </div>
@@ -386,46 +386,47 @@
                     </div>
                 </div>
 
+
                 <!-- Lualaba -->
                 <div class="site-card active">
                     <div class="site-image-container">
                         <img src="public/homme.jpg" alt="Site minier Lualaba" class="site-image">
-                        <div class="site-status-badge active">Actif</div>
+                                                <div class="site-status-badge active" data-translate="miningSquares.status.active">Actif</div>
                         <div class="site-overlay">
-                            <h3 class="site-name">Lualaba</h3>
-                            <p class="site-location">Province du Lualaba, RDC</p>
+                            <h3 class="site-name" data-translate="miningSquares.sites.lualaba.name">Lualaba</h3>
+                            <p class="site-location" data-translate="miningSquares.sites.lualaba.location">Province du Lualaba, RDC</p>
                         </div>
                     </div>
                     <div class="site-content">
                         <div class="minerals-section">
-                            <h4 class="minerals-title">Minerais Exploités</h4>
+                            <h4 class="minerals-title" data-translate="miningSquares.sites.lualaba.minerals">Minerais Exploités</h4>
                             <div class="minerals-grid">
                                 <div class="mineral-badge copper">
                                     <span>🔶</span>
-                                    <span>Cuivre</span>
+                                    <span data-translate="miningSquares.minerals.copper">Cuivre</span>
                                 </div>
                                 <div class="mineral-badge cobalt">
                                     <span>🔷</span>
-                                    <span>Cobalt</span>
+                                    <span data-translate="miningSquares.minerals.cobalt">Cobalt</span>
                                 </div>
                             </div>
                         </div>
                         <div class="site-details">
                             <div class="details-grid">
                                 <div class="detail-item">
-                                    <span class="detail-label">Production</span>
+                                    <span class="detail-label" data-translate="miningSquares.details.production">Production</span>
                                     <span class="detail-value">38,000 tonnes/an</span>
                                 </div>
                                 <div class="detail-item">
-                                    <span class="detail-label">Employés</span>
+                                    <span class="detail-label" data-translate="miningSquares.details.employees">Employés</span>
                                     <span class="detail-value">280</span>
                                 </div>
                                 <div class="detail-item">
-                                    <span class="detail-label">Superficie</span>
+                                    <span class="detail-label" data-translate="miningSquares.details.area">Superficie</span>
                                     <span class="detail-value">1,800 km²</span>
                                 </div>
                                 <div class="detail-item">
-                                    <span class="detail-label">Année de début</span>
+                                    <span class="detail-label" data-translate="miningSquares.details.startYear">Année de début</span>
                                     <span class="detail-value">2010</span>
                                 </div>
                             </div>
@@ -437,38 +438,38 @@
                 <div class="site-card active">
                     <div class="site-image-container">
                         <img src="public/le deux.jpg" alt="Site minier Ituri" class="site-image">
-                        <div class="site-status-badge active">Actif</div>
+ <div class="site-status-badge active" data-translate="miningSquares.status.active">Actif</div>
                         <div class="site-overlay">
-                            <h3 class="site-name">Ituri</h3>
-                            <p class="site-location">Province de l'Ituri, RDC</p>
+                            <h3 class="site-name" data-translate="miningSquares.sites.ituri.name">Ituri</h3>
+                            <p class="site-location" data-translate="miningSquares.sites.ituri.location">Province de l'Ituri, RDC</p>
                         </div>
                     </div>
                     <div class="site-content">
                         <div class="minerals-section">
-                            <h4 class="minerals-title">Minerais Exploités</h4>
+                            <h4 class="minerals-title" data-translate="miningSquares.sites.ituri.minerals">Minerais Exploités</h4>
                             <div class="minerals-grid">
                                 <div class="mineral-badge gold">
                                     <span>🟡</span>
-                                    <span>Or</span>
+                                    <span data-translate="miningSquares.minerals.gold">Or</span>
                                 </div>
                             </div>
                         </div>
                         <div class="site-details">
                             <div class="details-grid">
                                 <div class="detail-item">
-                                    <span class="detail-label">Production</span>
+                                    <span class="detail-label" data-translate="miningSquares.details.production">Production</span>
                                     <span class="detail-value">12 kg/an</span>
                                 </div>
                                 <div class="detail-item">
-                                    <span class="detail-label">Employés</span>
+                                    <span class="detail-label" data-translate="miningSquares.details.employees">Employés</span>
                                     <span class="detail-value">150</span>
                                 </div>
                                 <div class="detail-item">
-                                    <span class="detail-label">Superficie</span>
+                                    <span class="detail-label" data-translate="miningSquares.details.area">Superficie</span>
                                     <span class="detail-value">900 km²</span>
                                 </div>
                                 <div class="detail-item">
-                                    <span class="detail-label">Année de début</span>
+                                    <span class="detail-label" data-translate="miningSquares.details.startYear">Année de début</span>
                                     <span class="detail-value">2012</span>
                                 </div>
                             </div>
@@ -480,42 +481,42 @@
                 <div class="site-card development">
                     <div class="site-image-container">
                         <img src="https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg" alt="Site minier Maniema" class="site-image">
-                        <div class="site-status-badge development">En développement</div>
+<div class="site-status-badge development" data-translate="miningSquares.status.development">En développement</div>
                         <div class="site-overlay">
-                            <h3 class="site-name">Maniema</h3>
-                            <p class="site-location">Province du Maniema, RDC</p>
+                            <h3 class="site-name" data-translate="miningSquares.sites.maniema.name">Maniema</h3>
+                            <p class="site-location" data-translate="miningSquares.sites.maniema.location">Province du Maniema, RDC</p>
                         </div>
                     </div>
                     <div class="site-content">
                         <div class="minerals-section">
-                            <h4 class="minerals-title">Minerais Prévus</h4>
+                            <h4 class="minerals-title" data-translate="miningSquares.sites.maniema.minerals">Minerais Prévus</h4>
                             <div class="minerals-grid">
                                 <div class="mineral-badge gold">
                                     <span>🟡</span>
-                                    <span>Or</span>
+                                    <span data-translate="miningSquares.minerals.gold">Or</span>
                                 </div>
                                 <div class="mineral-badge coltan">
                                     <span>⬛</span>
-                                    <span>Coltan</span>
+                                    <span data-translate="miningSquares.minerals.coltan">Coltan</span>
                                 </div>
                             </div>
                         </div>
                         <div class="site-details">
                             <div class="details-grid">
                                 <div class="detail-item">
-                                    <span class="detail-label">Production prévue</span>
+                                    <span class="detail-label" data-translate="miningSquares.details.plannedProduction">Production prévue</span>
                                     <span class="detail-value">8 kg Or + 15,000 t Coltan/an</span>
                                 </div>
                                 <div class="detail-item">
-                                    <span class="detail-label">Emplois prévus</span>
+                                    <span class="detail-label" data-translate="miningSquares.details.plannedJobs">Emplois prévus</span>
                                     <span class="detail-value">200</span>
                                 </div>
                                 <div class="detail-item">
-                                    <span class="detail-label">Superficie</span>
+                                    <span class="detail-label" data-translate="miningSquares.details.area">Superficie</span>
                                     <span class="detail-value">1,200 km²</span>
                                 </div>
                                 <div class="detail-item">
-                                    <span class="detail-label">Lancement prévu</span>
+                                    <span class="detail-label" data-translate="miningSquares.details.plannedLaunch">Lancement prévu</span>
                                     <span class="detail-value">2025</span>
                                 </div>
                             </div>
@@ -527,38 +528,38 @@
                 <div class="site-card development">
                     <div class="site-image-container">
                         <img src="public/mine.jpg" alt="Site minier Nord-Kivu" class="site-image">
-                        <div class="site-status-badge development">En développement</div>
+                        <div class="site-status-badge development" data-translate="miningSquares.status.development">En développement</div>
                         <div class="site-overlay">
-                            <h3 class="site-name">Nord-Kivu</h3>
-                            <p class="site-location">Province du Nord-Kivu, RDC</p>
+                            <h3 class="site-name" data-translate="miningSquares.sites.nordKivu.name">Nord-Kivu</h3>
+                            <p class="site-location" data-translate="miningSquares.sites.nordKivu.location">Province du Nord-Kivu, RDC</p>
                         </div>
                     </div>
                     <div class="site-content">
                         <div class="minerals-section">
-                            <h4 class="minerals-title">Minerais Prévus</h4>
+                            <h4 class="minerals-title" data-translate="miningSquares.sites.nordKivu.minerals">Minerais Prévus</h4>
                             <div class="minerals-grid">
                                 <div class="mineral-badge coltan">
                                     <span>⬛</span>
-                                    <span>Coltan</span>
+                                    <span data-translate="miningSquares.minerals.coltan">Coltan</span>
                                 </div>
                             </div>
                         </div>
                         <div class="site-details">
                             <div class="details-grid">
                                 <div class="detail-item">
-                                    <span class="detail-label">Production prévue</span>
+                                    <span class="detail-label" data-translate="miningSquares.details.plannedProduction">Production prévue</span>
                                     <span class="detail-value">20,000 tonnes/an</span>
                                 </div>
                                 <div class="detail-item">
-                                    <span class="detail-label">Emplois prévus</span>
+                                    <span class="detail-label" data-translate="miningSquares.details.plannedJobs">Emplois prévus</span>
                                     <span class="detail-value">180</span>
                                 </div>
                                 <div class="detail-item">
-                                    <span class="detail-label">Superficie</span>
+                                    <span class="detail-label" data-translate="miningSquares.details.area">Superficie</span>
                                     <span class="detail-value">1,500 km²</span>
                                 </div>
                                 <div class="detail-item">
-                                    <span class="detail-label">Lancement prévu</span>
+                                    <span class="detail-label" data-translate="miningSquares.details.plannedLaunch">Lancement prévu</span>
                                     <span class="detail-value">2026</span>
                                 </div>
                             </div>
@@ -570,42 +571,42 @@
                 <div class="site-card planning">
                     <div class="site-image-container">
                         <img src="public/concesion.jpg" alt="Nouvelles concessions" class="site-image">
-                        <div class="site-status-badge planning">En planification</div>
+                        <div class="site-status-badge planning" data-translate="miningSquares.status.planning">En planification</div>
                         <div class="site-overlay">
-                            <h3 class="site-name">Nouvelles Concessions</h3>
-                            <p class="site-location">Diverses provinces, RDC</p>
+                            <h3 class="site-name" data-translate="miningSquares.sites.newConcessions.name">Nouvelles Concessions</h3>
+                            <p class="site-location" data-translate="miningSquares.sites.newConcessions.location">Diverses provinces, RDC</p>
                         </div>
                     </div>
                     <div class="site-content">
                         <div class="minerals-section">
-                            <h4 class="minerals-title">Minerais Ciblés</h4>
+                            <h4 class="minerals-title" data-translate="miningSquares.sites.newConcessions.minerals">Minerais Ciblés</h4>
                             <div class="minerals-grid">
                                 <div class="mineral-badge lithium">
                                     <span>⚪</span>
-                                    <span>Lithium</span>
+                                    <span data-translate="miningSquares.minerals.lithium">Lithium</span>
                                 </div>
                                 <div class="mineral-badge graphite">
                                     <span>⚫</span>
-                                    <span>Graphite</span>
+                                    <span data-translate="miningSquares.minerals.graphite">Graphite</span>
                                 </div>
                             </div>
                         </div>
                         <div class="site-details">
                             <div class="details-grid">
                                 <div class="detail-item">
-                                    <span class="detail-label">Investissement</span>
+                                    <span class="detail-label" data-translate="miningSquares.details.investment">Investissement</span>
                                     <span class="detail-value">25M$ USD</span>
                                 </div>
                                 <div class="detail-item">
-                                    <span class="detail-label">Emplois prévus</span>
+                                    <span class="detail-label" data-translate="miningSquares.details.plannedJobs">Emplois prévus</span>
                                     <span class="detail-value">300+</span>
                                 </div>
                                 <div class="detail-item">
-                                    <span class="detail-label">Phase d'étude</span>
+                                    <span class="detail-label" data-translate="miningSquares.details.studyPhase">Phase d'étude</span>
                                     <span class="detail-value">Exploration</span>
                                 </div>
                                 <div class="detail-item">
-                                    <span class="detail-label">Horizon</span>
+                                    <span class="detail-label" data-translate="miningSquares.details.horizon">Horizon</span>
                                     <span class="detail-value">2027-2030</span>
                                 </div>
                             </div>
@@ -631,21 +632,22 @@
                     </div>
                 </div>
                 <div class="footer-links">
-                    <a href="index.html">Accueil</a>
-                    <a href="index.html#apropos">À propos</a>
-                    <a href="index.html#activites">Activités</a>
-                    <a href="carres-miniers.html">Carrés Miniers</a>
-                    <a href="index.html#minerais">Minerais</a>
-                    <a href="index.html#projets">Projets</a>
-                    <a href="index.html#contact">Contact</a>
+                    <a href="index.html" data-translate="nav.home">Accueil</a>
+                    <a href="index.html#apropos" data-translate="nav.about">À propos</a>
+                    <a href="index.html#activites" data-translate="nav.activities">Activités</a>
+                    <a href="carres-miniers.html" data-translate="nav.miningSquares">Carrés Miniers</a>
+                    <a href="index.html#projets" data-translate="nav.projects">Projets</a>
+                    <a href="index.html#durabilite" data-translate="nav.sustainability">Développement Durable</a>
+                    <a href="index.html#partenariats" data-translate="nav.partnerships">Partenariats</a>
+                    <a href="index.html#contact" data-translate="nav.contact">Contact</a>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 KAZHAYES MINING SARL. Tous droits réservés.</p>
+                <p>&copy; 2025 KAZHAYES MINING SARL. <span data-translate="footer.rights">Tous droits réservés.</span></p>
             </div>
         </div>
     </footer>
-
+    <script src="mining-translations.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

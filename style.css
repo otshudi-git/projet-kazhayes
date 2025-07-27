@@ -1337,6 +1337,30 @@ body {
     color: var(--accent-color);
     font-weight: bold;
 }
+.sustainability-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-hover);
+}
+
+.card-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    width: 200px;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+}
+
+.card-icon.environment {
+    background-image: url('public/environment.jpeg');
+}
+
+.card-icon.social {
+    background-image: url('public/social.jpg');
+}
+
 
 /* Partenariats */
 .partnerships {
@@ -1411,6 +1435,37 @@ body {
     left: 0;
     color: var(--accent-color);
     font-weight: bold;
+}
+
+.card-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    width: 200px;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+}
+
+.card-icon.investment {
+    background-image: url('public/investment.jpeg');
+}
+
+.card-icon.innovation {
+    background-image: url('public/innovention.jpeg');
+}
+
+.card-icon.strategic {
+    background-image: url('public/partenariats.png');
+}
+
+
+
+.partnership-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
 }
 
 /* Contact */

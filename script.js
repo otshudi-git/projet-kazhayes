@@ -213,6 +213,25 @@ function createParticle() {
 // Créer des particules périodiquement
 setInterval(createParticle, 2000);
 
+// Gestion du panneau d'informations
+document.addEventListener('DOMContentLoaded', () => {
+    const infoToggle = document.getElementById('infoToggle');
+    const infoPanelContent = document.getElementById('infoPanelContent');
+    
+    if (infoToggle && infoPanelContent) {
+        infoToggle.addEventListener('click', () => {
+            infoPanelContent.classList.toggle('active');
+            
+            // Changer l'icône du bouton
+            if (infoPanelContent.classList.contains('active')) {
+                infoToggle.textContent = '✕';
+            } else {
+                infoToggle.textContent = '📊';
+            }
+        });
+    }
+});
+
 // Ajouter l'animation CSS pour les particules
 const style = document.createElement('style');
 style.textContent = `
@@ -234,3 +253,30 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+// Gestion du panneau d'informations
+document.addEventListener('DOMContentLoaded', () => {
+    const infoToggle = document.getElementById('infoToggle');
+    const infoPanelContent = document.getElementById('infoPanelContent');
+    
+    if (infoToggle && infoPanelContent) {
+        infoToggle.addEventListener('click', () => {
+            infoPanelContent.classList.toggle('active');
+            
+            // Changer l'icône du bouton
+            if (infoPanelContent.classList.contains('active')) {
+                infoToggle.textContent = '✕';
+            } else {
+                infoToggle.textContent = '📊';
+            }
+        });
+        
+        // Fermer le panneau en cliquant à l'extérieur
+        document.addEventListener('click', (e) => {
+            const infoPanel = document.querySelector('.hero-info-panel');
+            if (infoPanel && !infoPanel.contains(e.target)) {
+                infoPanelContent.classList.remove('active');
+                infoToggle.textContent = '📊';
+            }
+        });
+    }
+});

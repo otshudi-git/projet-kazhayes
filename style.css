@@ -637,7 +637,7 @@ body {
 }
 
 .card-icon.mission {
-    background-image: url('https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg');
+    background-image: url('public/mission.jpg');
 }
 
 .card-icon.values {

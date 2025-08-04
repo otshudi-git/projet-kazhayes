@@ -183,7 +183,7 @@ body {
 .hero {
     min-height: 100vh;
     background: linear-gradient(rgba(101, 51, 193, 0.85), rgba(102, 16, 16, 0.85)),
-                url('public/diama.gif');
+                url('public/dia.jpeg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;

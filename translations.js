@@ -155,7 +155,7 @@ const translations = {
             innovation: {
                 title: "Innovation et Technologie",
                 items: ["L'automatisation", "La numérisation", "L'électrification"],
-                description: "Nous sommes réceptifs à toutes propositions d'améliorations qui nous guideraient au sommet de la supériorité."
+                description: "Nous sommes réceptifs à toutes propositions d'améliorations qui nous guideraient à notre apogée."
             }
         },
         // Contact Section
@@ -336,7 +336,7 @@ const translations = {
             innovation: {
                 title: "Innovation and Technology",
                 items: ["Automation", "Digitization", "Electrification"],
-                description: "We are receptive to all improvement proposals that would guide us to the summit of superiority."
+                description: "We are open to all improvement proposals that would guide us to our peak."
             }
         },
         // Contact Section

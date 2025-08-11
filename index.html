@@ -9,6 +9,531 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="style.css">
+    
+    <style>
+           /* Carousel Hero */
+        .carousel-hero {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+            visibility: visible;
+            z-index: 1;
+        }
+
+        .slide-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(44, 44, 44, 0.6));
+        }
+
+        .slide-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            gap: 4rem;
+        }
+
+        .slide-text {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .slide-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .slide-subtitle {
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            color: var(--accent-color);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .slide-description {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+
+        .slide-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--accent-color);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: #e55a2b;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border-color: var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--primary-color);
+        }
+
+        .slide-visual {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Stats pour slide 1 */
+        .mining-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem 1rem;
+            border-radius: var(--border-radius);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 107, 53, 0.3);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--white);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        /* Navigation du Carousel */
+        .carousel-navigation {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            z-index: 10;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 2rem;
+            transform: translateY(-50%);
+        }
+
+        .carousel-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(255, 107, 53, 0.8);
+            border: none;
+            color: var(--white);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+        }
+
+        .carousel-btn:hover {
+            background: var(--accent-color);
+            transform: scale(1.1);
+        }
+
+        /* Indicateurs */
+        .carousel-indicators {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1rem;
+            z-index: 10;
+        }
+
+        .indicator {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            border: 2px solid var(--white);
+            background: transparent;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .indicator.active {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+
+        /* Barre de progression */
+        .carousel-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.3);
+            z-index: 10;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--accent-color);
+            width: 0%;
+            transition: width 5s linear;
+        }
+
+        /* Section d'accès rapide */
+        .quick-access {
+            padding: 100px 0;
+            background: var(--bg-light);
+        }
+
+                .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .quick-access-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .quick-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            color: var(--text-color);
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .quick-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+            color: var(--text-color);
+        }
+
+        .quick-icon {
+            width: 80px;
+            height: 80px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            border: 3px solid var(--accent-color);
+        }
+
+        .quick-icon.about {
+            background-image: url('https://images.pexels.com/photos/159832/justice-law-case-hearing-159832.jpeg');
+        }
+
+        .quick-icon.mining {
+            background-image: url('https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg');
+        }
+
+        .quick-icon.statistics {
+            background-image: url('https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg');
+        }
+
+        .quick-icon.contact {
+            background-image: url('https://images.pexels.com/photos/416978/pexels-photo-416978.jpeg');
+        }
+
+        .quick-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .quick-card p {
+            color: var(--text-light);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 1rem;
+            text-align: center;
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: var(--primary-color);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding-top: 2rem;
+                transition: var(--transition);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .nav-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .nav-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .nav-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+
+            .slide-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+                padding: 0 2rem;
+            }
+
+            .slide-text {
+                max-width: 100%;
+            }
+
+            .mining-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .carousel-navigation {
+                padding: 0 1rem;
+            }
+
+            .carousel-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .slide-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+
+            .mining-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-access-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+              /* Motion prefs: coupe l’autoplay (géré en JS) et adoucit transitions si réduit */
+    @media (prefers-reduced-motion: reduce){
+      .slide{transition:none}
+    }
+
+    /* Mobile */
+    @media (max-width:768px){
+      .nav-menu{display:none}
+      .carousel-nav{width:40px;height:40px;font-size:1.2rem}
+      .prev{left:1rem}
+      .next{right:1rem}
+    }
+  /* Conteneur navigable sans bloquer le texte */
+.carousel-navigation {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  z-index: 10;
+  pointer-events: none; /* laisse passer les clics sauf sur les boutons */
+}
+
+/* Boutons transparents */
+.carousel-btn {
+  pointer-events: auto;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(244, 242, 242, 0.029); /* semi-transparent, lisible sur fond clair ou sombre */
+  border: 2px solid rgba(240, 238, 238, 0);
+  color: #fff;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+/* Effet au survol */
+.carousel-btn:hover {
+  background: rgba(245, 243, 243, 0.5);
+}
+
+/* Position des boutons */
+#prevBtn { left: 0.75rem; }
+#nextBtn { right: 0.75rem; }
+
+/* Mobile : plus petits */
+@media (max-width: 768px) {
+  .carousel-btn {
+    width: 44px;
+    height: 44px;
+    font-size: 1.25rem;
+  }
+  #prevBtn { left: 0.5rem; }
+  #nextBtn { right: 0.5rem; }
+}
+
+@media (min-width: 992px){
+  .slide-content{ padding-left: calc(5% + 60px); }
+}
+
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -44,8 +569,8 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section id="accueil" class="hero">
+    <!-- Hero Section >
+    <section id="accueil" class="hero carousel">
         <div class="hero-content">
             <h1 class="hero-title">
                 <span class="title-main" data-translate="hero.title">KAZHAYES MINING SARL</span>
@@ -68,7 +593,163 @@
                 <div class="ore-deposit"></div>
             </div>
         </div>
+    </section-->
+
+    <!-- Carousel -->
+    <!-- Carousel Hero Section -->
+    <section class="carousel-hero">
+        <div class="carousel-container">
+            <!-- Slide 1: Présentation Entreprise -->
+            <div class="carousel-slide active" style="background-image: url('public/diama.gif');">
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <div class="slide-text">
+                        <h1 class="slide-title">KAZHAYES MINING SARL</h1>
+                        <h2 class="slide-subtitle" data-translate="carousel.slide1.subtitle">Les mines en République Démocratique du Congo</h2>
+                        <p class="slide-description">
+                            Une société minière leader en République Démocratique du Congo, 
+                             qui regroupe les activités de prospections et d’exploitations de mines dans le monde entier.  
+                             Elle concerne l’extraction des minéraux, de terres rares et des métaux dont le cuivre, le fer, l’or et le diamant.
+                        </p>
+                        <div class="slide-buttons">
+                            <a href="index.html#apropos" class="btn btn-primary">Découvrir notre histoire</a>
+                            <a href="index.html#contact" class="btn btn-secondary">Nous contacter</a>
+                        </div>
+                    </div>
+                    <div class="slide-visual">
+                        <div class="mining-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">10</div>
+                                <div class="stat-label">Années d'expérience</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">6</div>
+                                <div class="stat-label">Sites actifs</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">750+</div>
+                                <div class="stat-label">Employés</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2: Nos Activités -->
+            <div class="carousel-slide" style="background-image: url('public/exploitation.jpg');">
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <div class="slide-text">
+                        <h1 class="slide-title">NOS ACTIVITÉS</h1>
+                        <h2 class="slide-subtitle">De l'exploration à l'exportation</h2>
+                        <p class="slide-description">
+                            Notre expertise couvre toute la chaîne de valeur minière : exploration géologique, exploitation responsable, transformation moderne et exportation internationale.
+                        </p>
+                        <div class="slide-buttons">
+                            <a href="index.html#activites" class="btn btn-primary">Explorer nos activités</a>
+                            <a href="carres-miniers.html" class="btn btn-secondary">Voir nos sites</a>
+                        </div>
+                    </div>
+                    <div class="slide-visual">
+                        <div class="mining-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">4</div>
+                                <div class="stat-label">Activités principales</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">100%</div>
+                                <div class="stat-label">Chaîne de valeur</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3: Nos Minerais -->
+            <div class="carousel-slide" style="background-image: url('public/kas.jpg');">
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <div class="slide-text">
+                        <h1 class="slide-title">NOS MINERAIS</h1>
+                        <h2 class="slide-subtitle">Richesses du sous-sol congolais</h2>
+                        <p class="slide-description">
+                            Nous exploitons les minerais les plus précieux de la RDC : cuivre pour l'industrie, cobalt pour les batteries, or pour la finance et diamant pour le luxe.
+                        </p>
+                        <div class="slide-buttons">
+                            <a href="index.html#informations-officielles" class="btn btn-primary">Voir les statistiques</a>
+                            <a href="index.html#projets" class="btn btn-secondary">Nos projets</a>
+                        </div>
+                    </div>
+                    <div class="slide-visual">
+                        <div class="mining-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">45K</div>
+                                <div class="stat-label">Tonnes Cuivre/an</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">8.5K</div>
+                                <div class="stat-label">Tonnes Cobalt/an</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">20</div>
+                                <div class="stat-label">Kg Or/an</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 4: Développement Durable -->
+            <div class="carousel-slide" style="background-image: url('public/dia.jpeg');">
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <div class="slide-text">
+                        <h1 class="slide-title">DÉVELOPPEMENT DURABLE</h1>
+                        <h2 class="slide-subtitle">Exploitation responsable et durable</h2>
+                        <p class="slide-description">
+                            Nous nous engageons pour une exploitation minière respectueuse de l'environnement et bénéfique aux communautés locales, avec des programmes de formation et d'infrastructure.
+                        </p>
+                        <div class="slide-buttons">
+                            <a href="index.html#durabilite" class="btn btn-primary">En savoir plus</a>
+                            <a href="index.html#partenariats" class="btn btn-secondary">Nos partenariats</a>
+                        </div>
+                    </div>
+                    <div class="slide-visual">
+                        <div class="mining-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">100%</div>
+                                <div class="stat-label"></div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">1200+</div>
+                                <div class="stat-label">Emplois communautaires</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation du Carousel -->
+        <div class="carousel-navigation">
+            <button class="carousel-btn prev" id="prevBtn">‹</button>
+            <button class="carousel-btn next" id="nextBtn">›</button>
+        </div>
+
+        <!-- Indicateurs -->
+        <div class="carousel-indicators">
+            <button class="indicator active" data-slide="0"></button>
+            <button class="indicator" data-slide="1"></button>
+            <button class="indicator" data-slide="2"></button>
+            <button class="indicator" data-slide="3"></button>
+        </div>
+
+        <!-- Barre de progression -->
+        <div class="carousel-progress">
+            <div class="progress-bar"></div>
+        </div>
     </section>
+
 
     <!-- À propos -->
     <section id="apropos" class="about">
@@ -278,7 +959,132 @@
         </div>
     </footer>
 
-    <script src="translations.js"></script>
-    <script src="script.js"></script>
+    <script src="translations.js" defer></script>
+    <script src="script.js" defer></script>
+    <script src="carousel-script.js" defer></script>
+    <script src="carousel-translations.js" defer></script>
+
+
+<script>
+(() => {
+  // Sécurité: ne lance rien si un autre script a planté
+  window.addEventListener('DOMContentLoaded', () => {
+    class CarouselManager {
+      constructor() {
+        this.root = document.querySelector('.carousel-hero');
+        if (!this.root) return;
+
+        this.slides = this.root.querySelectorAll('.carousel-slide');
+        this.indicators = this.root.querySelectorAll('.indicator');
+        this.progressBar = this.root.querySelector('.progress-bar');
+        this.prevBtn = this.root.querySelector('#prevBtn');
+        this.nextBtn = this.root.querySelector('#nextBtn');
+
+        // Si pas de slides -> on sort proprement
+        if (!this.slides || this.slides.length === 0) return;
+
+        this.currentSlide = 0;
+        this.autoPlayInterval = null;
+        this.autoPlayDuration = 5000;
+        this.prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        this.setupEventListeners();
+        this.goToSlide(0);
+        this.startAutoPlay();
+      }
+
+      setupEventListeners() {
+        if (this.prevBtn) this.prevBtn.addEventListener('click', () => this.prevSlide());
+        if (this.nextBtn) this.nextBtn.addEventListener('click', () => this.nextSlide());
+
+        this.indicators.forEach((indicator, index) => {
+          indicator.addEventListener('click', () => this.goToSlide(index));
+        });
+
+        this.root.addEventListener('mouseenter', () => this.pauseAutoPlay());
+        this.root.addEventListener('mouseleave', () => this.startAutoPlay());
+
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowLeft') this.prevSlide();
+          if (e.key === 'ArrowRight') this.nextSlide();
+        });
+      }
+
+      goToSlide(index) {
+        const total = this.slides.length;
+        const i = ((index % total) + total) % total;
+
+        this.slides.forEach(s => s.classList.remove('active'));
+        this.indicators.forEach(d => d.classList.remove('active'));
+
+        this.slides[i].classList.add('active');
+        if (this.indicators[i]) this.indicators[i].classList.add('active');
+
+        this.currentSlide = i;
+        this.resetProgressBar();
+      }
+
+      nextSlide() {
+        this.goToSlide(this.currentSlide + 1);
+      }
+
+      prevSlide() {
+        this.goToSlide(this.currentSlide - 1);
+      }
+
+      startAutoPlay() {
+        // Pas d’autoplay si 1 seul slide ou si préférence “reduce motion”
+        if (this.slides.length < 2 || this.prefersReduced) {
+          this.pauseAutoPlay();
+          this.resetProgressBar(true);
+          return;
+        }
+        this.pauseAutoPlay();
+        this.resetProgressBar();
+        this.autoPlayInterval = setInterval(() => this.nextSlide(), this.autoPlayDuration);
+      }
+
+      pauseAutoPlay() {
+        if (this.autoPlayInterval) {
+          clearInterval(this.autoPlayInterval);
+          this.autoPlayInterval = null;
+        }
+      }
+
+      resetProgressBar(stop = false) {
+        if (!this.progressBar) return;
+        this.progressBar.style.transition = 'none';
+        this.progressBar.style.width = stop ? '0%' : '0%';
+        // Reflow
+        void this.progressBar.offsetHeight;
+        if (!stop) {
+          this.progressBar.style.transition = `width ${this.autoPlayDuration}ms linear`;
+          this.progressBar.style.width = '100%';
+        }
+      }
+    }
+
+    // Menu mobile (inchangé, mais protégé)
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+    if (navToggle && navMenu) {
+      navToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        navToggle.classList.toggle('active');
+      });
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+          navMenu.classList.remove('active');
+          navToggle.classList.remove('active');
+        });
+      });
+    }
+
+    // Lance le carrousel
+    new CarouselManager();
+  });
+})();
+</script>
+
 </body>
 </html>

@@ -466,6 +466,71 @@
         }
 
 
+
+/* Renforce UNIQUEMENT le slide 4, souvent plus clair */
+.carousel-slide:nth-child(4) .slide-overlay{
+  background: linear-gradient(135deg, rgba(0,0,0,.88), rgba(0,0,0,.72));
+}
+
+/* 3) Titres & textes du hero, tailles adaptées mobile */
+@media (max-width: 768px){
+  .slide-content{ padding: 0 1rem; gap: 1rem; text-align: center; }
+  .slide-title{
+    font-size: clamp(1.6rem, 10vw, 2.2rem);
+    line-height: 1.15;
+    text-wrap: balance;
+    text-shadow: 0 6px 8px rgba(0,0,0,.6);
+  }
+  .slide-subtitle{
+    font-size: clamp(1rem, 4.5vw, 1.2rem);
+    text-shadow: 0 2px 6px rgba(0,0,0,.5);
+  }
+  .slide-description{ font-size: .95rem; }
+}
+
+/* 4) Flèches : visibles, transparentes, sans bloquer le texte */
+.carousel-navigation{ pointer-events:none; }
+.carousel-btn{
+  pointer-events:auto;
+  position:absolute; top:50%; transform:translateY(-50%);
+  width:44px; height:44px; font-size:1.25rem;
+  background: rgba(0,0,0,.25);
+  border: 2px solid rgba(255,255,255,.4);
+  color:#fff;
+}
+#prevBtn{ left:.5rem; }
+#nextBtn{ right:.5rem; }
+
+/* 5) Stats du carrousel: mêmes styles sur tous les slides + échelle mobile */
+.carousel-hero .mining-stats .stat-item{
+  text-align:center;
+  background: rgba(255,255,255,0.10);
+  padding: 1rem .75rem;
+  border-radius: var(--border-radius);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,107,53,0.3);
+}
+.carousel-hero .mining-stats .stat-number{
+  font-size: 1.9rem; line-height:1; color: var(--accent-color); font-weight:700;
+}
+.carousel-hero .mining-stats .stat-label{
+  font-size: .95rem; color:#fff; font-weight:500;
+}
+@media (max-width: 768px){
+  .mining-stats{
+    grid-template-columns: repeat(2, minmax(0,1fr)); gap: .75rem;
+  }
+}
+@media (max-width: 420px){
+  .mining-stats{ grid-template-columns: 1fr; }
+}
+
+/* 6) Petit confort iOS (zone sûre) */
+.header{ padding-top: max(1rem, env(safe-area-inset-top)); }
+.carousel-hero{ padding-bottom: env(safe-area-inset-bottom); }
+
+
+
               /* Motion prefs: coupe l’autoplay (géré en JS) et adoucit transitions si réduit */
     @media (prefers-reduced-motion: reduce){
       .slide{transition:none}
@@ -1084,6 +1149,23 @@
     new CarouselManager();
   });
 })();
+
+
+(function(){
+  function setHeaderVar(){
+    const header = document.querySelector('.header');
+    if(!header) return;
+    const h = Math.round(header.getBoundingClientRect().height);
+    document.documentElement.style.setProperty('--header-h', h + 'px');
+  }
+  window.addEventListener('load', setHeaderVar);
+  window.addEventListener('resize', setHeaderVar);
+  // Si ton menu mobile ouvre/ferme et change la hauteur:
+  const navToggle = document.getElementById('navToggle');
+  if (navToggle) navToggle.addEventListener('click', setHeaderVar);
+})();
+
+
 </script>
 
 </body>

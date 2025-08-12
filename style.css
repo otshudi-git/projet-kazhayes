@@ -1674,3 +1674,92 @@ body {
         padding: 0.2rem 0.6rem;
     }
 }
+/* Mobile */
+@media (max-width:768px){
+  /* État par défaut: caché hors écran (pas display:none) */
+  .nav-menu{
+    position: fixed;
+    top: var(--header-h, 70px);
+    left: -100%;
+    right: 0;
+    height: calc(100dvh - var(--header-h, 70px));
+    background: var(--primary-color);
+    display: flex;                 /* <- important */
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.5rem 1rem;
+    transition: left .3s ease;
+    z-index: 1200;                 /* au-dessus du contenu */
+  }
+
+  /* Quand ouvert */
+  .nav-menu.active{
+    left: 0;                       /* glisse à l’écran */
+  }
+
+  /* Bouton burger cliquable au-dessus de tout */
+  .nav-toggle{
+    display: flex;
+    position: relative;
+    z-index: 1300;
+  }
+
+  /* Empêche le fond de scroller quand le menu est ouvert */
+  body.menu-open{
+    overflow: hidden;
+    touch-action: none;
+  }
+}
+/* ---- FIX NAV MOBILE ---- */
+@media (max-width: 768px){
+  /* Panneau */
+  .nav-menu{
+    position: fixed;
+    top: var(--header-h, 70px);
+    left: -100%;
+    width: 100%;
+    height: calc(100dvh - var(--header-h, 70px));
+    display: flex;                 /* IMPORTANT: pas "none" */
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+    padding: 1.25rem 1rem;
+    background: var(--primary-color, #1a1a1a);
+    overflow-y: auto;
+    transition: left .3s ease;
+    z-index: 1200;                 /* au-dessus du header */
+  }
+  /* État ouvert */
+  .nav-menu.active{
+    left: 0 !important;            /* force l’entrée à l’écran */
+    display: flex !important;      /* au cas où un ancien CSS met "display:none" */
+  }
+
+  /* Liens lisibles sur fond sombre */
+  .nav-link{
+    color: #fff !important;
+    text-decoration: none;
+    font-size: 1.1rem;
+  }
+
+  /* Bouton burger au-dessus */
+  .nav-toggle{
+    display: flex;
+    position: relative;
+    z-index: 1300;
+  }
+
+  /* Empêche le fond de scroller quand ouvert */
+  body.menu-open{ overflow: hidden; }
+}
+
+:root {
+  --header-height: 90px; /* valeur par défaut, changée par JS */
+}
+
+/* On ajoute un padding-top à .slide-content pour éviter que le texte passe sous la nav */
+.carousel-hero .slide-content {
+  padding-top: var(--header-height);
+}

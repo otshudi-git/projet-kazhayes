@@ -1756,7 +1756,7 @@ body {
 }
 
 :root {
-  --header-height: 90px; /* valeur par défaut, changée par JS */
+  --header-height: 0px; /* valeur par défaut, changée par JS */
 }
 
 /* On ajoute un padding-top à .slide-content pour éviter que le texte passe sous la nav */

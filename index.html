@@ -72,7 +72,7 @@
         .slide-title {
             font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 700;
-            color: var(--white);
+            color: rgba(240, 233, 233, 0.9);
             margin-bottom: 1rem;
             line-height: 1.2;
         }
@@ -146,7 +146,7 @@
 
         .stat-item {
             text-align: center;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(239, 236, 236, 0.1);
             padding: 2rem 1rem;
             border-radius: var(--border-radius);
             backdrop-filter: blur(10px);
@@ -466,10 +466,21 @@
         }
 
 
-
+/* Renforce UNIQUEMENT le slide 4, souvent plus clair */
+.carousel-slide:nth-child(1) .slide-overlay{
+  background: linear-gradient(135deg, rgba(248, 246, 246, 0.037), rgba(185, 122, 122, 0));
+}
+/* Renforce UNIQUEMENT le slide 4, souvent plus clair */
+.carousel-slide:nth-child(2) .slide-overlay{
+  background: linear-gradient(135deg, rgba(140, 135, 135, 0.037), rgba(234, 231, 231, 0));
+}
+/* Renforce UNIQUEMENT le slide 4, souvent plus clair */
+.carousel-slide:nth-child(3) .slide-overlay{
+  background: linear-gradient(135deg, rgba(248, 246, 246, 0.037), rgba(242, 241, 237, 0));
+}
 /* Renforce UNIQUEMENT le slide 4, souvent plus clair */
 .carousel-slide:nth-child(4) .slide-overlay{
-  background: linear-gradient(135deg, rgba(0,0,0,.88), rgba(0,0,0,.72));
+  background: linear-gradient(135deg, rgba(248, 246, 246, 0.037), rgba(234, 231, 231, 0));
 }
 /* Variable pour la hauteur du header (mise à jour en JS) */
 :root{ --header-h: 80px; }

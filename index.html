@@ -471,67 +471,58 @@
 .carousel-slide:nth-child(4) .slide-overlay{
   background: linear-gradient(135deg, rgba(0,0,0,.88), rgba(0,0,0,.72));
 }
+/* Variable pour la hauteur du header (mise à jour en JS) */
+:root{ --header-h: 80px; }
 
-/* 3) Titres & textes du hero, tailles adaptées mobile */
+/* Le header a une hauteur explicite */
+.header{ height: var(--header-h); }
+
+/* On évite de “pousser” le carousel avec un margin-top */
+.carousel-hero{
+  /* supprime ta ligne: margin-top: 80px; */
+  margin-top: 0 !important;
+  min-height: calc(100dvh - var(--header-h));  /* occupe l'espace visible sous le header */
+  display: flex;                                /* permet de centrer le contenu */
+}
+
+/* Le conteneur du carousel prend toute la hauteur disponible */
+.carousel-container{
+  position: relative;
+  flex: 1 1 auto;
+  height: auto;
+}
+
+/* Chaque slide occupe toute la hauteur disponible */
+.carousel-slide{
+  height: 100%;
+}
+
+/* CENTRAGE VERTICAL UNIVERSEL du contenu */
+.slide-content{
+  min-height: 100%;
+  display: flex;
+  align-items: center;   /* centre verticalement */
+  justify-content: center; /* centre horizontalement le bloc (utile sur mobile) */
+  gap: 4rem;
+  padding: 0 5%;
+}
+
+/* Sur mobile : pile le texte au centre proprement */
 @media (max-width: 768px){
-  .slide-content{ padding: 0 1rem; gap: 1rem; text-align: center; }
-  .slide-title{
-    font-size: clamp(1.6rem, 10vw, 2.2rem);
-    line-height: 1.15;
-    text-wrap: balance;
-    text-shadow: 0 6px 8px rgba(0,0,0,.6);
-  }
-  .slide-subtitle{
-    font-size: clamp(1rem, 4.5vw, 1.2rem);
-    text-shadow: 0 2px 6px rgba(0,0,0,.5);
-  }
-  .slide-description{ font-size: .95rem; }
-}
-
-/* 4) Flèches : visibles, transparentes, sans bloquer le texte */
-.carousel-navigation{ pointer-events:none; }
-.carousel-btn{
-  pointer-events:auto;
-  position:absolute; top:50%; transform:translateY(-50%);
-  width:44px; height:44px; font-size:1.25rem;
-  background: rgba(0,0,0,.25);
-  border: 2px solid rgba(255,255,255,.4);
-  color:#fff;
-}
-#prevBtn{ left:.5rem; }
-#nextBtn{ right:.5rem; }
-
-/* 5) Stats du carrousel: mêmes styles sur tous les slides + échelle mobile */
-.carousel-hero .mining-stats .stat-item{
-  text-align:center;
-  background: rgba(255,255,255,0.10);
-  padding: 1rem .75rem;
-  border-radius: var(--border-radius);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,107,53,0.3);
-}
-.carousel-hero .mining-stats .stat-number{
-  font-size: 1.9rem; line-height:1; color: var(--accent-color); font-weight:700;
-}
-.carousel-hero .mining-stats .stat-label{
-  font-size: .95rem; color:#fff; font-weight:500;
-}
-@media (max-width: 768px){
-  .mining-stats{
-    grid-template-columns: repeat(2, minmax(0,1fr)); gap: .75rem;
+  .slide-content{
+    flex-direction: column;
+    text-align: center;
+    gap: 1.25rem;
+    padding: 0 1rem;
   }
 }
-@media (max-width: 420px){
-  .mining-stats{ grid-template-columns: 1fr; }
-}
 
-/* 6) Petit confort iOS (zone sûre) */
-.header{ padding-top: max(1rem, env(safe-area-inset-top)); }
+/* Option confort iPhone (zones sûres) */
+.header{ padding-top: max(0px, env(safe-area-inset-top)); }
 .carousel-hero{ padding-bottom: env(safe-area-inset-bottom); }
 
 
-
-              /* Motion prefs: coupe l’autoplay (géré en JS) et adoucit transitions si réduit */
+ /* Motion prefs: coupe l’autoplay (géré en JS) et adoucit transitions si réduit */
     @media (prefers-reduced-motion: reduce){
       .slide{transition:none}
     }
@@ -671,29 +662,29 @@
                     <div class="slide-text">
                         <h1 class="slide-title">KAZHAYES MINING SARL</h1>
                         <h2 class="slide-subtitle" data-translate="carousel.slide1.subtitle">Les mines en République Démocratique du Congo</h2>
-                        <p class="slide-description">
+                        <p class="slide-description" data-translate="carousel.slide1.description">
                             Une société minière leader en République Démocratique du Congo, 
                              qui regroupe les activités de prospections et d’exploitations de mines dans le monde entier.  
                              Elle concerne l’extraction des minéraux, de terres rares et des métaux dont le cuivre, le fer, l’or et le diamant.
                         </p>
                         <div class="slide-buttons">
-                            <a href="index.html#apropos" class="btn btn-primary">Découvrir notre histoire</a>
-                            <a href="index.html#contact" class="btn btn-secondary">Nous contacter</a>
+                            <a href="index.html#apropos" class="btn btn-primary" data-translate="carousel.slide1.discover">Découvrir notre histoire</a>
+                            <a href="index.html#contact" class="btn btn-secondary" data-translate="carousel.slide1.contact">Nous contacter</a>
                         </div>
                     </div>
                     <div class="slide-visual">
                         <div class="mining-stats">
                             <div class="stat-item">
                                 <div class="stat-number">10</div>
-                                <div class="stat-label">Années d'expérience</div>
+                                <div class="stat-label" data-translate="carousel.slide1.years">Années d'expérience</div>
                             </div>
                             <div class="stat-item">
                                 <div class="stat-number">6</div>
-                                <div class="stat-label">Sites actifs</div>
+                                <div class="stat-label" data-translate="carousel.slide1.sites">Sites actifs</div>
                             </div>
                             <div class="stat-item">
                                 <div class="stat-number">750+</div>
-                                <div class="stat-label">Employés</div>
+                                <div class="stat-label" data-translate="carousel.slide1.employees">Employés</div>
                             </div>
                         </div>
                     </div>
@@ -705,25 +696,25 @@
                 <div class="slide-overlay"></div>
                 <div class="slide-content">
                     <div class="slide-text">
-                        <h1 class="slide-title">NOS ACTIVITÉS</h1>
-                        <h2 class="slide-subtitle">De l'exploration à l'exportation</h2>
-                        <p class="slide-description">
+                        <h1 class="slide-title" data-translate="carousel.slide2.title">NOS ACTIVITÉS</h1>
+                        <h2 class="slide-subtitle" data-translate="carousel.slide2.subtitle">De l'exploration à l'exportation</h2>
+                        <p class="slide-description" data-translate="carousel.slide2.description">
                             Notre expertise couvre toute la chaîne de valeur minière : exploration géologique, exploitation responsable, transformation moderne et exportation internationale.
                         </p>
                         <div class="slide-buttons">
-                            <a href="index.html#activites" class="btn btn-primary">Explorer nos activités</a>
-                            <a href="carres-miniers.html" class="btn btn-secondary">Voir nos sites</a>
+                            <a href="index.html#activites" class="btn btn-primary" data-translate="carousel.slide2.explore">Explorer nos activités</a>
+                            <a href="carres-miniers.html" class="btn btn-secondary" data-translate="carousel.slide2.sites">Voir nos sites</a>
                         </div>
                     </div>
                     <div class="slide-visual">
                         <div class="mining-stats">
                             <div class="stat-item">
                                 <div class="stat-number">4</div>
-                                <div class="stat-label">Activités principales</div>
+                                <div class="stat-label" data-translate="carousel.slide2.exploration">Activités principales</div>
                             </div>
                             <div class="stat-item">
                                 <div class="stat-number">100%</div>
-                                <div class="stat-label">Chaîne de valeur</div>
+                                <div class="stat-label" data-translate="carousel.slide2.exploitation">Chaîne de valeur</div>
                             </div>
                         </div>
                     </div>
@@ -735,29 +726,29 @@
                 <div class="slide-overlay"></div>
                 <div class="slide-content">
                     <div class="slide-text">
-                        <h1 class="slide-title">NOS MINERAIS</h1>
-                        <h2 class="slide-subtitle">Richesses du sous-sol congolais</h2>
-                        <p class="slide-description">
+                        <h1 class="slide-title" data-translate="carousel.slide3.title">NOS MINERAIS</h1>
+                        <h2 class="slide-subtitle" data-translate="carousel.slide3.subtitle">Richesses du sous-sol congolais</h2>
+                        <p class="slide-description" data-translate="carousel.slide3.description">
                             Nous exploitons les minerais les plus précieux de la RDC : cuivre pour l'industrie, cobalt pour les batteries, or pour la finance et diamant pour le luxe.
                         </p>
                         <div class="slide-buttons">
-                            <a href="index.html#informations-officielles" class="btn btn-primary">Voir les statistiques</a>
-                            <a href="index.html#projets" class="btn btn-secondary">Nos projets</a>
+                            <a href="index.html#informations-officielles" class="btn btn-primary" data-translate="carousel.slide3.statistics">Voir les statistiques</a>
+                            <a href="index.html#projets" class="btn btn-secondary" data-translate="carousel.slide3.projects">Nos projets</a>
                         </div>
                     </div>
                     <div class="slide-visual">
                         <div class="mining-stats">
                             <div class="stat-item">
                                 <div class="stat-number">45K</div>
-                                <div class="stat-label">Tonnes Cuivre/an</div>
+                                <div class="stat-label" data-translate="carousel.slide3.copper">Tonnes Cuivre/an</div>
                             </div>
                             <div class="stat-item">
                                 <div class="stat-number">8.5K</div>
-                                <div class="stat-label">Tonnes Cobalt/an</div>
+                                <div class="stat-label" data-translate="carousel.slide3.cobalt">Tonnes Cobalt/an</div>
                             </div>
                             <div class="stat-item">
                                 <div class="stat-number">20</div>
-                                <div class="stat-label">Kg Or/an</div>
+                                <div class="stat-label" data-translate="carousel.slide3.gold">Kg Or/an</div>
                             </div>
                         </div>
                     </div>
@@ -769,14 +760,14 @@
                 <div class="slide-overlay"></div>
                 <div class="slide-content">
                     <div class="slide-text">
-                        <h1 class="slide-title">DÉVELOPPEMENT DURABLE</h1>
-                        <h2 class="slide-subtitle">Exploitation responsable et durable</h2>
-                        <p class="slide-description">
+                        <h1 class="slide-title" data-translate="carousel.slide4.title">DÉVELOPPEMENT DURABLE</h1>
+                        <h2 class="slide-subtitle" data-translate="carousel.slide4.subtitle">Exploitation responsable et durable</h2>
+                        <p class="slide-description" data-translate="carousel.slide4.description">
                             Nous nous engageons pour une exploitation minière respectueuse de l'environnement et bénéfique aux communautés locales, avec des programmes de formation et d'infrastructure.
                         </p>
                         <div class="slide-buttons">
-                            <a href="index.html#durabilite" class="btn btn-primary">En savoir plus</a>
-                            <a href="index.html#partenariats" class="btn btn-secondary">Nos partenariats</a>
+                            <a href="index.html#durabilite" class="btn btn-primary" data-translate="carousel.slide4.learn">En savoir plus</a>
+                            <a href="index.html#partenariats" class="btn btn-secondary" data-translate="carousel.slide4.partnerships">Nos partenariats</a>
                         </div>
                     </div>
                     <div class="slide-visual">
@@ -787,7 +778,7 @@
                             </div>
                             <div class="stat-item">
                                 <div class="stat-number">1200+</div>
-                                <div class="stat-label">Emplois communautaires</div>
+                                <div class="stat-label" data-translate="carousel.slide4.community">Emplois communautaires</div>
                             </div>
                         </div>
                     </div>
@@ -1027,7 +1018,7 @@
     <script src="translations.js" defer></script>
     <script src="script.js" defer></script>
     <script src="carousel-script.js" defer></script>
-    <script src="carousel-translations.js" defer></script>
+    
 
 
 <script>

@@ -83,6 +83,51 @@ const translations = {
                 launch: "Lancement:"
             }
         },
+                // Carousel Slides
+        carousel: {
+            slide1: {
+                title: "KAZHAYES MINING SARL",
+                subtitle: "Leader de l'extraction minière en RDC",
+                description: "Depuis 2005, nous excellons dans l'exploration et l'exploitation de mines de cuivre, cobalt, or et diamant en République Démocratique du Congo.",
+                discover: "Découvrir notre histoire",
+                contact: "Nous contacter",
+                years: "Années d'expérience",
+                sites: "Sites actifs",
+                employees: "Employés"
+            },
+            slide2: {
+                title: "NOS ACTIVITÉS",
+                subtitle: "De l'exploration à l'exportation",
+                description: "Notre expertise couvre toute la chaîne de valeur minière : exploration géologique, exploitation responsable, transformation moderne et exportation internationale.",
+                explore: "Explorer nos activités",
+                sites: "Voir nos sites",
+                exploration: "Exploration",
+                exploitation: "Exploitation",
+                transformation: "Transformation",
+                exportation: "Exportation"
+            },
+            slide3: {
+                title: "NOS MINERAIS",
+                subtitle: "Richesses du sous-sol congolais",
+                description: "Nous exploitons les minerais les plus précieux de la RDC : cuivre pour l'industrie, cobalt pour les batteries, or pour la finance et diamant pour le luxe.",
+                statistics: "Voir les statistiques",
+                projects: "Nos projets",
+                copper: "Cuivre",
+                cobalt: "Cobalt",
+                gold: "Or"
+            },
+            slide4: {
+                title: "DÉVELOPPEMENT DURABLE",
+                subtitle: "Exploitation responsable et durable",
+                description: "Nous nous engageons pour une exploitation minière respectueuse de l'environnement et bénéfique aux communautés locales, avec des programmes de formation et d'infrastructure.",
+                learn: "En savoir plus",
+                partnerships: "Nos partenariats",
+                environment: "Protection Environnementale",
+                environmentDesc: "Réduction des émissions et économie circulaire",
+                community: "Impact Social",
+                communityDesc: "Formation et développement des communautés"
+            }
+        },
         // Minerals Section
         minerals: {
             title: "LES MINERAIS",
@@ -262,6 +307,51 @@ const translations = {
                 expectedJobs: "Expected jobs:",
                 investment: "Investment:",
                 launch: "Launch:"
+            }
+        },
+                // Carousel Slides
+        carousel: {
+            slide1: {
+                title: "KAZHAYES MINING SARL",
+                subtitle: "Leading mining extraction in DRC",
+                description: "Since 2005, we excel in exploration and mining of copper, cobalt, gold and diamond mines in the Democratic Republic of Congo.",
+                discover: "Discover our history",
+                contact: "Contact us",
+                years: "Years of experience",
+                sites: "Active sites",
+                employees: "Employees"
+            },
+            slide2: {
+                title: "OUR ACTIVITIES",
+                subtitle: "From exploration to export",
+                description: "Our expertise covers the entire mining value chain: geological exploration, responsible exploitation, modern transformation and international export.",
+                explore: "Explore our activities",
+                sites: "View our sites",
+                exploration: "Exploration",
+                exploitation: "Exploitation",
+                transformation: "Transformation",
+                exportation: "Export"
+            },
+            slide3: {
+                title: "OUR MINERALS",
+                subtitle: "Riches of the Congolese subsoil",
+                description: "We exploit the most precious minerals of the DRC: copper for industry, cobalt for batteries, gold for finance and diamond for luxury.",
+                statistics: "View statistics",
+                projects: "Our projects",
+                copper: "Copper",
+                cobalt: "Cobalt",
+                gold: "Gold"
+            },
+            slide4: {
+                title: "SUSTAINABLE DEVELOPMENT",
+                subtitle: "Responsible and sustainable exploitation",
+                description: "We are committed to environmentally friendly mining that benefits local communities, with training and infrastructure programs.",
+                learn: "Learn more",
+                partnerships: "Our partnerships",
+                environment: "Environmental Protection",
+                environmentDesc: "Emission reduction and circular economy",
+                community: "Social Impact",
+                communityDesc: "Training and community development"
             }
         },
         // Minerals Section

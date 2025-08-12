@@ -6,7 +6,7 @@ class CarouselManager {
         this.indicators = document.querySelectorAll('.indicator');
         this.progressBar = document.querySelector('.progress-bar');
         this.autoPlayInterval = null;
-        this.autoPlayDuration = 5000; // 5 secondes
+        this.autoPlayDuration = 2000; // 5 secondes
         
         this.init();
     }

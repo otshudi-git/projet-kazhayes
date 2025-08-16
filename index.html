@@ -599,6 +599,69 @@
 @media (min-width: 992px){
   .slide-content{ padding-left: calc(5% + 60px); }
 }
+/* Même ligne de base pour tous les titres du carrousel */
+:root{
+  --header-h: 80px;                 /* déjà calculée par ton JS, garde-la */
+  --hero-title-offset: calc(var(--header-h) + 20px);  /* distance fixe depuis le haut */
+}
+
+/* Le contenu du slide n'est plus centré verticalement : on aligne en haut */
+.carousel-hero .slide-content{
+  align-items: stretch;              /* prend toute la hauteur */
+  justify-content: flex-start;       /* aligne le contenu en haut */
+  padding-top: var(--hero-title-offset); /* pousse le bloc texte sous la navbar */
+  padding-bottom: 24px;              /* petit espace bas */
+  gap: 4rem;
+}
+
+/* Le bloc texte commence en haut, le visuel s’aligne à côté */
+.carousel-hero .slide-text{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;       /* titre en haut du bloc */
+  align-items: flex-start;
+  margin: 0;                         /* pas de décalage parasite */
+}
+
+/* Marges de titres uniformes = même baseline visuelle */
+.carousel-hero .slide-title{
+  margin: 0 0 .6rem 0;
+  line-height: 1.15;
+}
+.carousel-hero .slide-subtitle{ margin: 0 0 1rem 0; }
+
+/* Desktop: 2 colonnes constantes */
+@media (min-width: 992px){
+  .carousel-hero .slide-content{
+    display: grid;
+    grid-template-columns: minmax(0,600px) 1fr; /* largeur texte constante */
+    align-items: start;
+    gap: 4rem;
+  }
+  .carousel-hero .slide-visual{ align-self: stretch; display:flex; align-items:center; justify-content:center; }
+}
+
+/* Mobile: une colonne, mais même offset haut pour le titre */
+@media (max-width: 768px){
+  .carousel-hero .slide-content{
+    display: block;                 /* une seule colonne */
+    padding-top: calc(var(--header-h) + 12px);  /* un peu plus compact sur mobile */
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .carousel-hero .slide-text{
+    align-items: center;
+    text-align: center;
+  }
+}
+
+/* (Optionnel) Verrouille la taille de titre pour éviter des écarts visuels entre slides */
+@media (min-width: 992px){
+  .carousel-hero .slide-title{ font-size: 3rem; }
+  .carousel-hero .slide-subtitle{ font-size: 1.4rem; }
+}
+
+
 
     </style>
 </head>
@@ -1201,6 +1264,20 @@
   }
   window.addEventListener('load', updateHeaderSpace);
   window.addEventListener('resize', updateHeaderSpace);
+})();
+
+(function(){
+  function setHeaderVar(){
+    const header = document.querySelector('.header');
+    if(!header) return;
+    const h = Math.round(header.getBoundingClientRect().height);
+    document.documentElement.style.setProperty('--header-h', h + 'px');
+  }
+  window.addEventListener('DOMContentLoaded', setHeaderVar);
+  window.addEventListener('load', setHeaderVar);
+  window.addEventListener('resize', setHeaderVar);
+  const navToggle = document.getElementById('navToggle');
+  if (navToggle) navToggle.addEventListener('click', ()=> setTimeout(setHeaderVar, 250));
 })();
 </script>
 

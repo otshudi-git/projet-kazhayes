@@ -1219,7 +1219,7 @@ body {
 
 .project-stat {
     background: linear-gradient(135deg, var(--accent-color), #e55a2b);
-    color: var(--white);
+    color: var(--black);
     padding: 2rem;
     border-radius: var(--border-radius);
     text-align: center;
@@ -1234,13 +1234,14 @@ body {
     font-size: 3rem;
     font-weight: 700;
     line-height: 1;
-    color: var(--white);
+    color: var(--black);
 }
 
 .stat-unit {
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
+    color: var(--black);
 }
 
 .stat-label {

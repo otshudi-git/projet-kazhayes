@@ -277,6 +277,9 @@ body {
     background: var(--white);
     color: var(--primary-color);
 }
+#description,#contact{
+    color: var(--primary-color);
+}
 
 .hero-visual {
     flex: 1;
